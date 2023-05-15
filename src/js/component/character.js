@@ -7,6 +7,12 @@ import { Link } from "react-router-dom";
 
 export const Character = () => {
   const { actions, store } = useContext(Context);
+
+  const addFavorite = (character) => {
+    console.log(character);
+    actions.addFavoriteCharacter(character)
+  };
+
   useEffect(() => {
     // Solicitud GET (Request).
     actions.obtenerPersonajes();
@@ -68,6 +74,7 @@ export const Character = () => {
                             <button
                               type="button"
                               className="btn btn-light me-auto opacity-75"
+                              key={people.uid}
                             >
                               Learn More
                             </button>
@@ -75,6 +82,7 @@ export const Character = () => {
                           <button
                             type="button"
                             className="btn btn-warning ms-auto opacity-75"
+                            onClick={() => addFavorite(people)}
                           >
                             ❤
                           </button>
@@ -103,6 +111,7 @@ export const Character = () => {
                             <button
                               type="button"
                               className="btn btn-light me-auto opacity-75"
+
                             >
                               Learn More
                             </button>
@@ -110,6 +119,8 @@ export const Character = () => {
                           <button
                             type="button"
                             className="btn btn-warning ms-auto opacity-75"
+                            onClick={() => addFavorite(people)}
+
                           >
                             ❤
                           </button>

@@ -5,6 +5,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       planets: null,
       character: null,
       planet: null,
+      favorites: {
+        characters: [],
+        planets: []
+      }
     },
     actions: {
       //acá tengo que hacer las 2 funcionalidades que acabo de escribir para obtener la info.
@@ -35,6 +39,40 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ planet: data.result.properties }))
           .catch((err) => console.error(err));
       },
+
+      addFavoriteCharacter: (character) => {
+        const store = getStore()
+        const isAlreadyFavorite = store.favorites.characters.some((favorite) => favorite.uid === character.uid)
+        const updatedFavorites = isAlreadyFavorite ? [...store.favorites.characters] : [...store.favorites.characters, character] 
+        setStore(
+          {
+            ...store, 
+            favorites: {
+              ...store.favorites,
+              characters: updatedFavorites
+            }
+
+          }
+        )
+
+      },
+
+      addFavoritePlanet: (planet) => {
+        const store = getStore()
+        const isAlreadyFavorite = store.favorites.planets.some((favorite) => favorite.uid === planet.uid)
+        const updatedFavorites = isAlreadyFavorite ? [...store.favorites.planets] : [...store.favorites.planets, planet] 
+        setStore(
+          {
+            ...store, 
+            favorites: {
+              ...store.favorites,
+             planets: updatedFavorites
+            }
+            
+          }
+        )
+
+      }
 
       //   changeColor: (index, color) => {
       //     //get the store

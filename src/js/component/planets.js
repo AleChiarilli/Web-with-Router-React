@@ -7,6 +7,10 @@ import { Link } from "react-router-dom";
 
 export const Planets = () => {
   const { actions, store } = useContext(Context);
+  const addFavorite = (planet) => {
+    console.log(planet);
+    actions.addFavoritePlanet(planet)
+  };
   useEffect(() => {
     // Solicitud GET (Request).
     actions.obtenerPlanetas();
@@ -56,6 +60,7 @@ export const Planets = () => {
                         }
                         className="d-block w-100"
                         alt="..."
+                        
                       />
                       <div className="carousel-caption d-none d-md-block">
                         <span className="badge bg-secondary">
@@ -74,6 +79,7 @@ export const Planets = () => {
                           <button
                             type="button"
                             className="btn btn-warning ms-auto opacity-75"
+                            onClick={() => addFavorite(planet)}
                           >
                             ❤
                           </button>
@@ -107,6 +113,7 @@ export const Planets = () => {
                           <button
                             type="button"
                             className="btn btn-warning ms-auto opacity-75"
+                            onClick={() => addFavorite(planet)}
                           >
                             ❤
                           </button>

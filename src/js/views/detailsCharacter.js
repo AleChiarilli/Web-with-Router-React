@@ -82,15 +82,18 @@ export const DetailsCharacter = () => {
         </div>
 
         <div className="card-body">
-
-        <Link to={`/`} >
-        <button className="btn btn-primary">
-  Go Back
-</button>
-</Link>
-        <button className="btn btn-primary">
-  <a href="https://starwars-visualguide.com/#/characters?page=1" target="_blank" className="text-white">Go to encyclopedia</a>
-</button>
+          <Link to={`/`}>
+            <button className="btn btn-primary">Go Back</button>
+          </Link>
+          <button className="btn btn-primary">
+            <a
+              href="https://starwars-visualguide.com/#/characters?page=1"
+              target="_blank"
+              className="text-white"
+            >
+              Go to encyclopedia
+            </a>
+          </button>
         </div>
       </div>
     </div>
